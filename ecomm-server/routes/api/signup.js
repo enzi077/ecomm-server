@@ -12,7 +12,7 @@ router.post('/', async(req,res)=>{
         password: bcrypt.hashSync(req.body.password, 10)
     })
     const users=await loadUsers()
-    res.send(await users.insertOne(newUser))
+    res.status(200).send(await users.insertOne(newUser))
 })
 
 
