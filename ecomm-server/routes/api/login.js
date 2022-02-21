@@ -41,6 +41,41 @@ router.get('/user', async(req,res)=>{
     })
 })
 
+router.post('/user', async(req,res)=>{
+    const users=await loadUsers()
+    if(!req.body.forCart) {
+        res.status(200).send(await users.updateOne({
+            _id: ObjectId(req.body.user._id)
+        },{
+            $addToSet: {shortlist: req.body.product}
+        }))
+    } else {
+        res.status(200).send(await users.updateOne({
+            _id: ObjectId(req.body.user._id)
+        },{
+            $addToSet: {cart: {$each: req.body.check}}
+        }))
+    }
+})
+
+router.put('/user', async(req,res)=>{
+    const users=await loadUsers()
+    if(!req.body.forCart) {
+        res.status(200).send(await users.updateOne({
+            _id: ObjectId(req.body.user._id)
+        },{
+            $pullAll: {shortlist: req.body.check}
+        }))
+    } else {
+        res.status(200).send(await users.updateOne({
+            _id: ObjectId(req.body.user._id)
+        },{
+            $pullAll: {cart: {$each: req.body.check}}
+        }))
+    }
+})
+
+
 
 async function loadUsers () {
     try {
