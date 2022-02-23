@@ -70,7 +70,7 @@ router.put('/user', async(req,res)=>{
         res.status(200).send(await users.updateOne({
             _id: ObjectId(req.body.user._id)
         },{
-            $pullAll: {cart: {$each: req.body.check}}
+            $pullAll: {cart: req.body.check}
         }))
     }
 })
