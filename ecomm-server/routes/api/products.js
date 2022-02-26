@@ -7,7 +7,6 @@ const router=express.Router()
 //get all products from server
 router.get('/', async(req,res)=>{
     const products = await loadProducts()
-    console.log(products)
     res.status(200).send(await products.find({}).toArray())
 })
 
