@@ -75,6 +75,21 @@ router.put('/user', async(req,res)=>{
     }
 })
 
+router.put('/user/editprofile/:id', async(req,res)=>{
+    const users=await loadUsers()
+    await users.updateOne({
+        _id: ObjectId(req.params.id)
+    },{
+        $set: {
+            username: req.body.username,
+            email: req.body.email,
+            address: req.body.address,
+            contact: req.body.contact
+        }
+    })
+    res.status(200).send(await users.findOne({_id: ObjectId(req.params.id)}))
+})
+
 
 
 async function loadUsers () {

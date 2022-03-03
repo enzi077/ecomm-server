@@ -10,6 +10,8 @@ const userSchema=new mongoose.Schema({
         type: String
     },
     password: String,
+    contact: String,
+    address: String,
     shortlist: Array,
     cart: Array
 })
