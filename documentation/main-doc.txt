@@ -2,7 +2,7 @@ The project is about an e-commerce application, performing all the basic functio
 
 It has two parts to it:
 1. Server
-2. CLient
+2. Client
 
 1. The server code contains a backend server using express.js and mongoose to connect to a mongo db database. It has three main routes:
  a. /signup
@@ -13,7 +13,7 @@ The signup route handles the ability to add/register a new user to the mongo db 
 
 The login route helps the user to log into his/her account and once logged in the front end, it will display info reagrding what the user has in the databse. The get, post and put functions of express are used to get the user logged in, add data to their shortlist and cart and edit/remove from the same respectively.
 
-The products routes simply gets the data from the backend.
+The products route gets the data from the backend.
 
 
 2. The client code contains the front where the data is displayed corresponding to the functionalities and user interactions.
@@ -27,3 +27,4 @@ e. Checkout
 f. Category
 g. Payment
 h. Error
+i. UserProfile

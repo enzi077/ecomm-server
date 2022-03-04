@@ -7,10 +7,7 @@ const app=express()
 
 // my middleware-- uses cors package to remove cors error and bodyparser to parse
 // only json
-// app.use((req, res, next) => {
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     next();
-// });
+
 app.use(cors())
 app.use(bodyParser.json())
 
